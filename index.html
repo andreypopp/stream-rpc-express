@@ -1,0 +1,77 @@
+<!doctype html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>stream-rpc-express</title>
+<link rel="stylesheet" href="_static/default.css" type="text/css" />
+<script src="_static/jquery.js"></script>
+<script src="_static/jquery.lettering.js"></script>
+<script>
+  $(function() {
+    var $headers = $('h1');
+    $headers.lettering('words').children('span').lettering();
+    $headers.children('span').children('span:contains("¶")').remove();
+  });
+</script>
+<div class="main">
+  
+  <div class="section" id="stream-rpc-express">
+<h1>stream-rpc-express<a class="headerlink" href="#stream-rpc-express" title="Permalink to this headline">¶</a></h1>
+<p>Call Express app over arbitrary streams (even WebSockets)</p>
+<p>To get started, install <tt class="docutils literal"><span class="pre">stream-rpc-express</span></tt> package via <tt class="docutils literal"><span class="pre">npm</span></tt>:</p>
+<div class="highlight-python"><pre>% npm install stream-rpc-express</pre>
+</div>
+<p>After that you will be able to use <tt class="docutils literal"><span class="pre">stream-rpc-express</span></tt> library in your code.  The
+basic usage example is as follows:</p>
+<div class="highlight-python"><pre>var createRPC = require('stream-rpc-express'),
+    websocket = require('websocket-stream'),
+    Server = require('ws').Server,
+    through = require('through');
+
+// define or require your express app
+var express = require('express'),
+    app = express();
+
+server = new Server({port: 3000});
+server.on('connection', function(conn) {
+  var socket = websocket(conn),
+      rpc = createRPC(app);
+
+  socket
+    .pipe(through(function(chunk) { this.push(JSON.parse(chunk)); }))
+    .pipe(rpc)
+    .pipe(through(function(chunk) { this.push(JSON.stringify(chunk)); }))
+    .pipe(socket);
+});</pre>
+</div>
+<p>Now in a browser (via browserify):</p>
+<div class="highlight-python"><pre>var websocket = require('websocket-stream'),
+    createRPC = require('stream-rpc');
+
+var socket = websocket('ws://localhost:3000'),
+    rpc = createRPC();
+
+socket.
+  .pipe(through(function(chunk) { this.push(JSON.parse(chunk)); }))
+  .pipe(rpc)
+  .pipe(through(function(chunk) { this.push(JSON.stringify(chunk)); }))
+  .pipe(socket);
+
+socket.on('open', function() {
+  rpc.call({
+    method: 'GET',
+    url: '/someurl'
+  }, function(err, result) {
+
+  });</pre>
+</div>
+</div>
+
+
+  <footer>
+    <p>stream-rpc-express 0.1.1</p>
+    <p>Generated using Sphinx 1.2b1</p>
+  </footer>
+</div>
+</div>
+<a class="github-ribbon" href="https://github.com/andreypopp/stream-rpc-express">
+  <img src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">
+</a>
