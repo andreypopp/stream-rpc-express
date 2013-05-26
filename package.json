@@ -1,7 +1,7 @@
 {
   "name": "stream-rpc-express",
   "version": "0.1.1",
-  "description": "Call Eexpress app over arbitrary stream (even WebSockets)",
+  "description": "Call Express app over arbitrary stream (even WebSockets)",
   "main": "lib/index.js",
   "dependencies": {
     "stream-rpc": "~0.x.x",
