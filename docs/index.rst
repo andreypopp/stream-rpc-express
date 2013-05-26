@@ -7,7 +7,7 @@ To get started, install ``stream-rpc-express`` package via ``npm``::
 
   % npm install stream-rpc-express
 
-After that you will be able to use ``stream-rpc-express`` library in you code.  The
+After that you will be able to use ``stream-rpc-express`` library in your code.  The
 basic usage example is as follows::
 
   var createRPC = require('stream-rpc-express'),
