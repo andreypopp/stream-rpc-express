@@ -1,0 +1,35 @@
+{
+  "name": "stream-rpc-express",
+  "version": "0.1.1",
+  "description": "Call Eexpress app over arbitrary stream (even WebSockets)",
+  "main": "lib/index.js",
+  "dependencies": {
+    "stream-rpc": "~0.x.x",
+    "express": ""
+  },
+  "devDependencies": {
+    "coffee-script": "~1.6.x",
+    "mocha": "",
+    "semver": "",
+    "sphinx-npm": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/andreypopp/stream-rpc-express.git"
+  },
+  "homepage": "https://github.com/andreypopp/stream-rpc-express",
+  "keywords": [
+    "stream",
+    "streams",
+    "rpc",
+    "websockets",
+    "express",
+    "connect"
+  ],
+  "author": {
+    "name": "Andrey Popp",
+    "email": "8mayday@gmail.com",
+    "url": "http://andreypopp.com"
+  },
+  "license": "MIT"
+}
