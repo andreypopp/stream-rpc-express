@@ -37,6 +37,9 @@ class Response extends EventEmitter
       this.headers['Connect-Type'] = 'application/json'
     this.emit 'end'
 
+  getHeader: (name) ->
+    this.headers[name]
+
   setHeader: (name, value) ->
     this.headers[name] = value
 
