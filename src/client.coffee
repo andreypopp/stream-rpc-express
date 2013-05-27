@@ -8,8 +8,8 @@ module.exports = ->
   client.request = (options, callback) ->
     request =
       url: options.uri or options.url
-      method: options.method
-      headers: options.headers
+      method: options.method or 'GET'
+      headers: options.headers or {}
       body: ''
 
     if options.qs
