@@ -31,22 +31,23 @@ basic usage example is as follows::
       .pipe(socket);
   });
 
-Now in a browser (via browserify)::
+Now in a browser (via browserify), we have ``stream-rpc-express/client`` module
+which mimics ``requests`` API::
 
   var websocket = require('websocket-stream'),
-      createRPC = require('stream-rpc');
+      createClient = require('stream-rpc-express/client')
 
   var socket = websocket('ws://localhost:3000'),
-      rpc = createRPC();
+      client = createClient();
 
   socket.
     .pipe(through(function(chunk) { this.push(JSON.parse(chunk)); }))
-    .pipe(rpc)
+    .pipe(client)
     .pipe(through(function(chunk) { this.push(JSON.stringify(chunk)); }))
     .pipe(socket);
 
   socket.on('open', function() {
-    rpc.call({
+    client.request({
       method: 'GET',
       url: '/someurl'
     }, function(err, result) {
