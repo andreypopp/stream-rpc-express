@@ -31,11 +31,11 @@ basic usage example is as follows::
       .pipe(socket);
   });
 
-Now in a browser (via browserify), we have ``stream-rpc-express/client`` module
+Now in a browser (via browserify), we have ``stream-rpc-express`` module
 which mimics ``requests`` API::
 
   var websocket = require('websocket-stream'),
-      createClient = require('stream-rpc-express/client')
+      createClient = require('stream-rpc-express')
 
   var socket = websocket('ws://localhost:3000'),
       client = createClient();
