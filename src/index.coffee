@@ -62,9 +62,6 @@ module.exports = (app) ->
           body: res.body
           headers: res.headers
 
-      try
-        app.handle(req, res)
-      catch err
-        done(err)
+      app.handle(req, res)
 
   stream
